@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tadiwanashe Nyakwangwa | Developer Portfolio</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #6366f1;
+            --secondary: #8b5cf6;
+            --accent: #ec4899;
+            --dark: #0f172a;
+            --darker: #020617;
+            --light: #f1f5f9;
+            --gray: #64748b;
+            --glow: rgba(99, 102, 241, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--darker);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(15, 23, 42, 0.95);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar-brand {
+            font-weight: 800;
+            font-size: 1.5rem;
+            color: white !important;
+        }
+
+        .nav-link {
+            color: var(--light) !important;
+            font-weight: 500;
+            margin: 0 15px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary) !important;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::before {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 80px;
+            background: radial-gradient(ellipse at top, rgba(99, 102, 241, 0.15), transparent 50%),
+                        radial-gradient(ellipse at bottom, rgba(236, 72, 153, 0.15), transparent 50%);
+        }
+
+        .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.3;
+            animation: float 20s infinite;
+        }
+
+        .shape:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            background: var(--accent);
+            bottom: 20%;
+            right: 15%;
+            animation-delay: 5s;
+        }
+
+        .shape:nth-child(3) {
+            width: 250px;
+            height: 250px;
+            background: var(--secondary);
+            top: 50%;
+            right: 30%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.5rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s backwards;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            max-width: 600px;
+            animation: fadeInUp 1s ease 0.4s backwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            padding: 15px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .btn-primary-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.5);
+        }
+
+        .btn-outline-custom {
+            border: 2px solid var(--primary);
+            padding: 13px 35px;
+            border-radius: 50px;
+            font-weight: 600;
+            color: var(--primary);
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-custom:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .tech-item {
+            background: rgba(99, 102, 241, 0.05);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .tech-item:hover {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .tech-item i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--gray);
+            font-size: 1.2rem;
+            margin-bottom: 4rem;
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .glass-card:hover {
+            background: rgba(15, 23, 42, 0.8);
+            border-color: var(--primary);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Skills */
+        .skill-tag {
+            display: inline-block;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            color: var(--primary);
+            padding: 8px 16px;
+            margin: 5px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--primary);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Projects */
+        .project-card {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3);
+        }
+
+        .project-icon {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 40px;
+            text-align: center;
+        }
+
+        .project-icon i {
+            font-size: 3rem;
+            color: white;
+        }
+
+        .project-body {
+            padding: 30px;
+        }
+
+        .project-body h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        /* Services */
+        .service-card {
+            text-align: center;
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        /* Contact Form */
+        .form-control {
+            background: rgba(15, 23, 42, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            padding: 15px 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            background: rgba(15, 23, 42, 0.9);
+            border-color: var(--primary);
+            color: var(--light);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        .form-label {
+            color: var(--light);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        /* Social Links */
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(15, 23, 42, 0.8);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px 0;
+            text-align: center;
+            color: var(--gray);
+        }
+
+        /* Modal */
+        .modal-content {
+            background: rgba(15, 23, 42, 0.98);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            color: var(--light);
+        }
+
+        .modal-header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .code-editor {
+            background: #000;
+            border-radius: 10px;
+            padding: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            color: #00ff9d;
+            overflow-x: auto;
+            margin-bottom: 20px;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-content .subtitle { font-size: 1.2rem; }
+            .section-title { font-size: 2rem; }
+            .tech-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">TN</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home">
+        <div class="floating-shapes">
+            <div class="shape"></div>
+            <div class="shape"></div>
+            <div class="shape"></div>
+        </div>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <h1>Hi, I'm <span class="gradient-text">Tadiwanashe</span></h1>
+                    <p class="subtitle">Full Stack Developer & Database Specialist</p>
+                    <p>Computer Science student at Midlands State University, passionate about creating innovative digital solutions and scalable systems.</p>
+                    <div class="mt-4">
+                        <a href="#projects" class="btn btn-primary-custom me-3">View My Work</a>
+                        <a href="#contact" class="btn btn-outline-custom">Let's Talk</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="tech-grid">
+                        <div class="tech-item">
+                            <i class="fas fa-code"></i>
+                            <p>Web Dev</p>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-database"></i>
+                            <p>Databases</p>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-server"></i>
+                            <p>Backend</p>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-react"></i>
+                            <p>React</p>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fab fa-python"></i>
+                            <p>Python</p>
+                        </div>
+                        <div class="tech-item">
+                            <i class="fas fa-cloud"></i>
+                            <p>Cloud</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title gradient-text">About Me</h2>
+            <p class="section-subtitle">Crafting digital experiences with code and creativity</p>
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="glass-card">
+                        <h3 class="mb-4">My Journey</h3>
+                        <p>I'm a Computer Science student at Midlands State University with a strong focus on web development, software engineering, and database administration. My journey in technology began with curiosity about how systems work, and has evolved into a dedication to building robust applications.</p>
+                        <p>I'm constantly learning and adapting to new technologies in this rapidly evolving field. My goal is to create solutions that are not only functional but also efficient, scalable, and user-friendly.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="glass-card">
+                        <h3 class="mb-4">Technical Skills</h3>
+                        <div class="mb-3">
+                            <h5 style="color: var(--primary);">Web Development</h5>
+                            <span class="skill-tag">HTML/CSS</span>
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">PHP</span>
+                            <span class="skill-tag">Bootstrap</span>
+                        </div>
+                        <div class="mb-3">
+                            <h5 style="color: var(--secondary);">Programming</h5>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Java</span>
+                            <span class="skill-tag">C++</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">REST APIs</span>
+                        </div>
+                        <div>
+                            <h5 style="color: var(--accent);">Database</h5>
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">SQL Server</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title gradient-text">Featured Projects</h2>
+            <p class="section-subtitle">Interactive tools showcasing my technical capabilities</p>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="project-body">
+                            <h4>Code Editor</h4>
+                            <p>A browser-based code editor with syntax highlighting for multiple programming languages.</p>
+                            <button class="btn btn-primary-custom w-100" data-bs-toggle="modal" data-bs-target="#codeEditorModal">Launch Tool</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="project-body">
+                            <h4>SQL Simulator</h4>
+                            <p>Practice SQL queries with a simulated database environment and real-time results.</p>
+                            <button class="btn btn-primary-custom w-100" data-bs-toggle="modal" data-bs-target="#sqlSimulatorModal">Launch Tool</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <div class="project-body">
+                            <h4>API Tester</h4>
+                            <p>Test REST API endpoints with different HTTP methods and view responses.</p>
+                            <button class="btn btn-primary-custom w-100" data-bs-toggle="modal" data-bs-target="#apiTesterModal">Launch Tool</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title gradient-text">What I Do</h2>
+            <p class="section-subtitle">Professional services to bring your ideas to life</p>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="glass-card service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h4>Web Development</h4>
+                        <p>Building responsive, user-friendly websites and web applications using modern technologies and best practices.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="glass-card service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h4>Software Engineering</h4>
+                        <p>Designing and developing robust software solutions with clean, maintainable code and proper architecture.</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="glass-card service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h4>Database Administration</h4>
+                        <p>Designing, implementing, and maintaining efficient database systems with optimal performance and security.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title gradient-text">Let's Connect</h2>
+            <p class="section-subtitle">Have a project in mind? Let's talk about it</p>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="glass-card">
+                        <form id="contactForm">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="name" class="form-label">Your Name</label>
+                                    <input type="text" class="form-control" id="name" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="subject" class="form-label">Subject</label>
+                                <input type="text" class="form-control" id="subject" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea class="form-control" id="message" rows="5" required></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary-custom btn-lg">Send Message</button>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div class="text-center mt-5">
+                        <h4 class="mb-4">Follow Me</h4>
+                        <div>
+                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p class="mb-0">© 2025 Tadiwanashe Nyakwangwa | Crafted with passion and code</p>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div class="modal fade" id="codeEditorModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title gradient-text">Interactive Code Editor</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-4">Try out this simple code editor with syntax highlighting.</p>
+                    <div class="mb-3">
+                        <label for="languageSelect" class="form-label">Select Language</label>
+                        <select class="form-select" id="languageSelect">
+                            <option value="html">HTML</option>
+                            <option value="css">CSS</option>
+                            <option value="javascript">JavaScript</option>
+                            <option value="python">Python</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="codeInput" class="form-label">Write Your Code</label>
+                        <textarea class="form-control" id="codeInput" rows="10" style="font-family: 'JetBrains Mono', monospace;"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <button id="formatCode" class="btn btn-primary-custom">Format Code</button>
+                        <button id="runCode" class="btn btn-outline-custom ms-2">Run Code</button>
+                    </div>
+                    <div>
+                        <h5>Output:</h5>
+                        <div class="code-editor" id="codeOutput">
+                            <div>// Your formatted code will appear here</div>
+                        </div>
+                    </div>
+                    <div id="executionResult" class="mt-3 d-none">
+                        <h5>Execution Result:</h5>
+                        <div class="code-editor" id="resultOutput"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="sqlSimulatorModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title gradient-text">SQL Query Simulator</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-4">Practice SQL queries with this simulated database environment.</p>
+                    <div class="mb-3">
+                        <label for="sqlQuery" class="form-label">Enter SQL Query</label>
+                        <textarea class="form-control" id="sqlQuery" rows="4" style="font-family: 'JetBrains Mono', monospace;" placeholder="SELECT * FROM users;"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <button id="executeQuery" class="btn btn-primary-custom">Execute Query</button>
+                        <button id="resetQuery" class="btn btn-outline-custom ms-2">Reset</button>
+                    </div>
+                    <div id="queryResult" class="d-none">
+                        <h5>Query Result:</h5>
+                        <div class="code-editor" id="queryOutput"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="apiTesterModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title gradient-text">API Tester</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <p class="mb-4">Test REST API endpoints with different HTTP methods.</p>
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <label for="httpMethod" class="form-label">HTTP Method</label>
+                            <select class="form-select" id="httpMethod">
+                                <option value="GET">GET</option>
+                                <option value="POST">POST</option>
+                                <option value="PUT">PUT</option>
+                                <option value="DELETE">DELETE</option>
+                            </select>
+                        </div>
+                        <div class="col-md-9">
+                            <label for="apiEndpoint" class="form-label">API Endpoint</label>
+                            <input type="text" class="form-control" id="apiEndpoint" value="/api/users">
+                        </div>
+                    </div>
+                    <div class="mb-3" id="requestBodyContainer">
+                        <label for="requestBody" class="form-label">Request Body (JSON)</label>
+                        <textarea class="form-control" id="requestBody" rows="4" style="font-family: 'JetBrains Mono', monospace;" placeholder='{"name": "John", "email": "john@example.com"}'></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <button id="sendRequest" class="btn btn-primary-custom">Send Request</button>
+                    </div>
+                    <div id="apiResponse" class="d-none">
+                        <h5>API Response:</h5>
+                        <div class="code-editor" id="responseOutput"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            setupSmoothScrolling();
+            setupContactForm();
+            setupNavbarScroll();
+            initCodeEditor();
+            initSQLSimulator();
+            initAPITester();
+        });
+
+        function setupNavbarScroll() {
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 100) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+        }
+
+        function setupSmoothScrolling() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 70,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+
+        function setupContactForm() {
+            const form = document.getElementById('contactForm');
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const subject = document.getElementById('subject').value;
+                const message = document.getElementById('message').value;
+                
+                if (name && email && subject && message) {
+                    alert('Thank you for your message! I will get back to you soon.');
+                    form.reset();
+                } else {
+                    alert('Please fill in all fields.');
+                }
+            });
+        }
+
+        function initCodeEditor() {
+            const languageSelect = document.getElementById('languageSelect');
+            const codeInput = document.getElementById('codeInput');
+            const formatCodeBtn = document.getElementById('formatCode');
+            const runCodeBtn = document.getElementById('runCode');
+            const codeOutput = document.getElementById('codeOutput');
+            const executionResult = document.getElementById('executionResult');
+            const resultOutput = document.getElementById('resultOutput');
+            
+            languageSelect.addEventListener('change', function() {
+                setDefaultCode(this.value);
+            });
+            
+            formatCodeBtn.addEventListener('click', function() {
+                formatCode(languageSelect.value, codeInput.value);
+            });
+            
+            runCodeBtn.addEventListener('click', function() {
+                runCode(languageSelect.value, codeInput.value);
+            });
+            
+            setDefaultCode(languageSelect.value);
+            
+            function setDefaultCode(language) {
+                let defaultCode = '';
+                switch(language) {
+                    case 'html':
+                        defaultCode = '<!DOCTYPE html>\n<html>\n<head>\n    <title>My Page</title>\n</head>\n<body>\n    <h1>Hello World!</h1>\n</body>\n</html>';
+                        break;
+                    case 'css':
+                        defaultCode = 'body {\n    font-family: Arial, sans-serif;\n    margin: 0;\n    padding: 20px;\n    background-color: #f0f0f0;\n}\n\nh1 {\n    color: #333;\n    text-align: center;\n}';
+                        break;
+                    case 'javascript':
+                        defaultCode = '// Simple JavaScript example\nfunction greet(name) {\n    return "Hello, " + name + "!";\n}\n\nconst message = greet("World");\nconsole.log(message);';
+                        break;
+                    case 'python':
+                        defaultCode = '# Simple Python example\ndef greet(name):\n    return f"Hello, {name}!"\n\nmessage = greet("World")\nprint(message)';
+                        break;
+                }
+                codeInput.value = defaultCode;
+                formatCode(language, defaultCode);
+            }
+            
+            function formatCode(language, code) {
+                let formattedCode = code.replace(/\n/g, '<br>')
+                                       .replace(/ /g, '&nbsp;')
+                                       .replace(/\t/g, '&nbsp;&nbsp;&nbsp;&nbsp;');
+                codeOutput.innerHTML = formattedCode;
+            }
+            
+            function runCode(language, code) {
+                let result = '';
+                switch(language) {
+                    case 'javascript':
+                        result = code.includes('console.log') ? 'Hello, World!' : 'Code executed successfully';
+                        break;
+                    case 'python':
+                        result = 'Hello, World! (Python code executed)';
+                        break;
+                    default:
+                        result = 'Code formatting complete. This is a simulation.';
+                }
+                resultOutput.textContent = result;
+                executionResult.classList.remove('d-none');
+            }
+        }
+
+        function initSQLSimulator() {
+            const sqlQuery = document.getElementById('sqlQuery');
+            const executeQueryBtn = document.getElementById('executeQuery');
+            const resetQueryBtn = document.getElementById('resetQuery');
+            const queryResult = document.getElementById('queryResult');
+            const queryOutput = document.getElementById('queryOutput');
+            
+            const sampleData = {
+                users: [
+                    { id: 1, name: 'John Doe', email: 'john@example.com', country: 'USA' },
+                    { id: 2, name: 'Jane Smith', email: 'jane@example.com', country: 'Canada' },
+                    { id: 3, name: 'Bob Johnson', email: 'bob@example.com', country: 'UK' }
+                ],
+                products: [
+                    { id: 1, name: 'Laptop', category: 'Electronics', price: 999.99 },
+                    { id: 2, name: 'Smartphone', category: 'Electronics', price: 699.99 },
+                    { id: 3, name: 'Desk Chair', category: 'Furniture', price: 199.99 }
+                ],
+                orders: [
+                    { id: 1, user_id: 1, product_id: 1, quantity: 1, order_date: '2023-01-15' },
+                    { id: 2, user_id: 2, product_id: 2, quantity: 2, order_date: '2023-02-20' },
+                    { id: 3, user_id: 1, product_id: 3, quantity: 1, order_date: '2023-03-10' }
+                ]
+            };
+            
+            executeQueryBtn.addEventListener('click', function() {
+                const query = sqlQuery.value.trim().toUpperCase();
+                let result = '';
+                
+                if (query.startsWith('SELECT')) {
+                    if (query.includes('FROM USERS')) {
+                        result = JSON.stringify(sampleData.users, null, 2);
+                    } else if (query.includes('FROM PRODUCTS')) {
+                        result = JSON.stringify(sampleData.products, null, 2);
+                    } else if (query.includes('FROM ORDERS')) {
+                        result = JSON.stringify(sampleData.orders, null, 2);
+                    } else {
+                        result = 'Query executed successfully. No specific table selected.';
+                    }
+                } else if (query.startsWith('INSERT') || query.startsWith('UPDATE') || query.startsWith('DELETE')) {
+                    result = 'Query executed successfully (simulated).';
+                } else {
+                    result = 'Error: Unsupported query type or syntax error.';
+                }
+                
+                queryOutput.textContent = result;
+                queryResult.classList.remove('d-none');
+            });
+            
+            resetQueryBtn.addEventListener('click', function() {
+                sqlQuery.value = 'SELECT * FROM users;';
+                queryResult.classList.add('d-none');
+            });
+        }
+
+        function initAPITester() {
+            const httpMethod = document.getElementById('httpMethod');
+            const apiEndpoint = document.getElementById('apiEndpoint');
+            const requestBodyContainer = document.getElementById('requestBodyContainer');
+            const sendRequestBtn = document.getElementById('sendRequest');
+            const apiResponse = document.getElementById('apiResponse');
+            const responseOutput = document.getElementById('responseOutput');
+            
+            httpMethod.addEventListener('change', function() {
+                if (this.value === 'GET' || this.value === 'DELETE') {
+                    requestBodyContainer.classList.add('d-none');
+                } else {
+                    requestBodyContainer.classList.remove('d-none');
+                }
+            });
+            
+            const sampleResponses = {
+                '/api/users': {
+                    GET: { status: 200, data: [{ id: 1, name: 'John Doe', email: 'john@example.com' }] },
+                    POST: { status: 201, data: { id: 3, name: 'New User' }, message: 'User created' },
+                    PUT: { status: 200, data: { id: 1, name: 'Updated' }, message: 'User updated' },
+                    DELETE: { status: 200, message: 'User deleted successfully' }
+                }
+            };
+            
+            sendRequestBtn.addEventListener('click', function() {
+                const method = httpMethod.value;
+                const endpoint = apiEndpoint.value;
+                
+                sendRequestBtn.disabled = true;
+                sendRequestBtn.textContent = 'Sending...';
+                
+                setTimeout(() => {
+                    let response;
+                    if (sampleResponses[endpoint] && sampleResponses[endpoint][method]) {
+                        response = sampleResponses[endpoint][method];
+                    } else {
+                        response = { status: 404, error: 'Endpoint not found' };
+                    }
+                    
+                    responseOutput.textContent = JSON.stringify(response, null, 2);
+                    apiResponse.classList.remove('d-none');
+                    
+                    sendRequestBtn.disabled = false;
+                    sendRequestBtn.textContent = 'Send Request';
+                }, 1000);
+            });
+        }
+    </script>
+</body>
+</html>
